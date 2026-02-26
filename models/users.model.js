@@ -20,12 +20,11 @@ const userSchema = new Schema(
       required: true,
       minlength: 6,
     },
-    role: {
-      type: String,
-      required: true,
-      enum: ["user", "admin", "vendor"],
+    isAdmin: {
+      type: Boolean,
+      required: false,
     },
-    isactive: {
+    isActive: {
       type: Boolean,
       default: true,
     },
