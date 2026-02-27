@@ -1,11 +1,11 @@
 import mongoose, { Schema } from "mongoose";
+import validator from "validator";
 
 const userSchema = new Schema(
   {
     name: {
       type: String,
       required: [true, "Name is required"],
-      unique: true,
       trim: true,
     },
     email: {
@@ -14,11 +14,21 @@ const userSchema = new Schema(
       unique: true,
       lowercase: true,
       trim: true,
+      validate: [validator.isEmail, "Please provide a valid email"],
     },
     password: {
       type: String,
       required: true,
       minlength: 6,
+    },
+    phoneNumber: {
+      type: String,
+      required: false,
+      trim: true,
+      validate: [
+        validator.isMobilePhone,
+        "Please provide a valid phone number",
+      ],
     },
     isAdmin: {
       type: Boolean,
@@ -27,6 +37,10 @@ const userSchema = new Schema(
     isActive: {
       type: Boolean,
       default: true,
+    },
+    Token: {
+      type: String,
+      required: false,
     },
   },
   {
