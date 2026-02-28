@@ -5,3 +5,5 @@ const verifyAdmin = (req, res, next) => {
     res.status(403).json({ status: "error", message: "Access denied" });
   }
 };
+
+export default verifyAdmin;
