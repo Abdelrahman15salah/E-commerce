@@ -38,6 +38,18 @@ const userSchema = new Schema(
       type: Boolean,
       default: true,
     },
+    cart: [
+      {
+        product: {
+          type: Schema.Types.ObjectId,
+          ref: "Product",
+        },
+        quantity: {
+          type: Number,
+          default: 1,
+        },
+      },
+    ],
   },
   {
     timestamps: true,
